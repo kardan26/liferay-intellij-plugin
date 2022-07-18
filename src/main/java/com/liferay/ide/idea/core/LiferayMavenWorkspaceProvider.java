@@ -54,11 +54,11 @@ public class LiferayMavenWorkspaceProvider extends AbstractWorkspaceProvider {
 	public String[] getWorkspaceModuleDirs() {
 		String workspaceBomVersion = getTargetPlatformVersion();
 
-		if (Objects.nonNull(workspaceBomVersion)) {
+		if (Objects.isNull(workspaceBomVersion)) {
 			return null;
 		}
 
-		return new String[] {"modules"};
+		return new String[] { getWorkspaceProperty(WorkspaceConstants.MODULES_DIR_PROPERTY, WorkspaceConstants.MODULES_DIR_DEFAULT)};
 	}
 
 	@Override
